@@ -58,7 +58,7 @@ int main(){
     std::vector<double> q1 {0,1,2,3};
     std::vector<double> q2 {2,-1,4,3};
 
-    printVector(q1 - q2);
+    // printVector(q1 - q2);
 
     return 0;
 }
