@@ -1,7 +1,11 @@
 #include <vector>
 #include <iostream>
+
 #include "tridiag.h"
 #include "vector_feature.h"
+#include "operator.h"
+
+// 
 
 int main(){
     std::vector<double> x {-2, 0, 3, 4};   // knot positions
@@ -58,7 +62,7 @@ int main(){
     std::vector<double> q1 {0,1,2,3};
     std::vector<double> q2 {2,-1,4,3};
 
-    // printVector(q1 - q2);
+    printVector(q1 - q2);
 
     return 0;
 }
