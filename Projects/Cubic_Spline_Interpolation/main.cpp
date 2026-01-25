@@ -5,7 +5,6 @@
 #include "vector_feature.h"
 #include "operator.h"
 
-// 
 
 int main(){
     std::vector<double> x {-2, 0, 3, 4};   // knot positions
