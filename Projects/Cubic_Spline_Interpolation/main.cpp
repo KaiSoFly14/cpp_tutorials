@@ -3,8 +3,8 @@
 
 #include "tridiag.h"
 #include "vector_feature.h"
-#include "operator.h"
-
+#include "operators.h"
+#include "csv_write.h"
 
 int main(){
     std::vector<double> x {-2, 0, 3, 4};   // knot positions
@@ -55,13 +55,27 @@ int main(){
         d[i] = (c[i + 1] - c[i]) / (3.0 * h[i]);
     }
 
-    std::vector<double> yeet = linspace(0, 2, 11);
-    printVector(yeet);
 
-    std::vector<double> q1 {0,1,2,3};
-    std::vector<double> q2 {2,-1,4,3};
+    std::vector<double> x_final{};
+    std::vector<double> y_final{};
 
-    printVector(q1 - q2);
+    for (std::size_t i = 0; i < x.size()-1; i++){
+        double dif {x[i+1] - x[i]};
+        std::vector<double> yeet = linspace(x[i], x[i+1], dif*10 + 1);
+        std::vector<double> yote = a[i] + b[i] * (yeet - x[i]) + c[i] * (yeet - x[i])*(yeet - x[i]) + d[i] * (yeet - x[i])*(yeet - x[i])*(yeet - x[i]);
+
+        // printVector(yote);
+
+        x_final.insert(x_final.end(), yeet.begin(), yeet.end());
+        y_final.insert(y_final.end(), yote.begin(), yote.end());
+        
+    }
+
+    printVector(x_final);
+    printVector(y_final);
+    
+    std::vector<std::vector<double>> all_vectors = {x_final, y_final};
+    writeVectorsToCSV("output.csv", all_vectors);
 
     return 0;
 }
