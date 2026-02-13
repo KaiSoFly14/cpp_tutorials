@@ -31,7 +31,7 @@
 			"detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
 		},
 		{
-			"label": "Build Python Extension (g++)",
+			"label": "Build Python Extension (g++) file must be named wrapper",
 			"type": "shell",
 			"command": "C:\\msys64\\mingw64\\bin\\g++.exe",
 			"args": [
@@ -41,7 +41,7 @@
                 "-std=c++20",
                 "-IC:/python313/include",
                 "-LC:/python313/libs",
-                "${fileDirname}\\**.cpp",
+                "${fileDirname}\\wrapper.cpp",
                 "-lpython313",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.pyd"

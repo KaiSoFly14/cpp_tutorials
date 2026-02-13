@@ -1,16 +1,11 @@
 #define PY_SSIZE_T_CLEAN
-#include <Python.h>
+#include <Python.h> // Need to make sure pythons path is defined in tasks.json
 
-// -------------------------------
-// 1️⃣ Your actual C++ function
-// -------------------------------
 int add(int a, int b) {
     return a + b;
 }
 
-// ------------------------------------
-// 2️⃣ Python wrapper function
-// ------------------------------------
+// Python wrapper function
 static PyObject* py_add(PyObject* self, PyObject* args) {
     int a, b;
 
@@ -25,17 +20,13 @@ static PyObject* py_add(PyObject* self, PyObject* args) {
     return PyLong_FromLong(result);
 }
 
-// ------------------------------------
-// 3️⃣ Method table
-// ------------------------------------
+// Method Table
 static PyMethodDef MyMethods[] = {
     {"add", py_add, METH_VARARGS, "Add two integers"},
     {NULL, NULL, 0, NULL}  // Sentinel
 };
 
-// ------------------------------------
-// 4️⃣ Module definition
-// ------------------------------------
+// Module definition
 static struct PyModuleDef mymodule = {
     PyModuleDef_HEAD_INIT,
     "myadd",              // Module name (must match filename!)
@@ -44,9 +35,7 @@ static struct PyModuleDef mymodule = {
     MyMethods
 };
 
-// ------------------------------------
-// 5️⃣ Module initialization
-// ------------------------------------
+// Module init
 extern "C" PyMODINIT_FUNC PyInit_myadd(void) {
     return PyModule_Create(&mymodule);
 }
