@@ -31,6 +31,34 @@
 			"detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
 		},
 		{
+			"label": "Build Python Extension (g++)",
+			"type": "shell",
+			"command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+			"args": [
+				"-O3",
+                "-Wall",
+                "-shared",
+                "-std=c++20",
+                "-IC:/python313/include",
+                "-LC:/python313/libs",
+                "${fileDirname}\\**.cpp",
+                "-lpython313",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.pyd"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"detail": "compiler: C:\\msys64\\mingw64\\bin\\g++.exe"
+		},
+		{
 			"type": "shell",
 			"label": "C/C++: cl.exe build active file",
 			"command": "cl",
