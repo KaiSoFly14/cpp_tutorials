@@ -4,7 +4,6 @@
 #include "tridiag.h"
 #include "vector_feature.h"
 #include "operators.h"
-#include "csv_write.h"
 
 std::vector<std::vector<double>> cubicSpline(
     std::vector<double> x,
